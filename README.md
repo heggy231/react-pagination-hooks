@@ -4,73 +4,97 @@
 
 - style cdn bootstrap added index.html (https://react-bootstrap.github.io/getting-started/introduction/)
 
+## how jsonplaceholder post data look like
+
+```json
+[
+{
+"userId": 1,
+"id": 1,
+"title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+"body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+},
+{
+"userId": 1,
+"id": 2,
+"title": "qui est esse",
+"body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+},
+{}, {}, ...]
+```
+
 - install axios()
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### understand variable posts in useState([])
 
-## Available Scripts
+- default value for posts is `[]`
 
-In the project directory, you can run:
+```js
+  // create state values
+  const [posts, setPosts] = useState([]);
 
-### `yarn start`
+  // same as setting empty obj to key posts inside of state obj
+  state = {
+    posts: []
+  }
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- we have api call therefore create another state management for loading.  default value is `false`.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```js
+const [loading, setLoading] = useState(false);
+```
 
-### `yarn test`
+- Quick react snippets
+`racf` - arrow function component
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## why do we use `loading` useState()?
 
-### `yarn build`
+![loading transition](./asset/posts-data-load.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- We wrap 
+`setLoading(true)`
+for `await axios.get(url)`
+then close it off with `setLoading(false)`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This ensures posts data has been loaded. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- add Spinner for while data is loading: 
+* Spinner: https://bit.dev/joshk/react-spinners-css/facebook, https://github.com/JoshK2/react-spinners-css
 
-### `yarn eject`
+```js
+import React from 'react';
+import Facebook from '@bit/joshk.react-spinners-css.facebook';
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+export default <Facebook color="#be97e8" />
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### bootstrap list group
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+https://react-bootstrap.github.io/components/list-group/
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+https://getbootstrap.com/docs/4.0/components/list-group/
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `mb-4` boostrap utility: margin bottom 4
 
-### Code Splitting
+```jsx
+<ListGroup>
+  <ListGroup.Item>Cras justo odio</ListGroup.Item>
+  <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+  <ListGroup.Item>Morbi leo risus</ListGroup.Item>
+  <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+  <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+</ListGroup>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+// or use regular bootstrap
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<ul class="list-group">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
+</ul>
+```
