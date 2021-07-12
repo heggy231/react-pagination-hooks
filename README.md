@@ -1,6 +1,10 @@
 # [React Pagination](https://www.youtube.com/watch?v=IYCa1F-OWmk)
 
-- post from jsonplaceholder
+- [post from jsonplaceholder](https://jsonplaceholder.typicode.com/posts)
+
+- style cdn bootstrap added index.html (https://react-bootstrap.github.io/getting-started/introduction/)
+
+- install axios()
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
