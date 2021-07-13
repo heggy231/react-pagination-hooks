@@ -62,11 +62,28 @@ This ensures posts data has been loaded.
 - add Spinner for while data is loading: 
 * Spinner: https://bit.dev/joshk/react-spinners-css/facebook, https://github.com/JoshK2/react-spinners-css
 
-```js
-import React from 'react';
-import Facebook from '@bit/joshk.react-spinners-css.facebook';
+- Step 1) install [npm react spinner css](https://www.npmjs.com/package/react-spinners-css):
+  > npm i react-spinners-css
 
-export default <Facebook color="#be97e8" />
+- Step 2) add any Spinner loading gif
+  ex) <Heart/>
+
+```js
+import { Heart } from 'react-spinners-css';
+
+
+export const Posts = ({ posts, loading }) => {
+  if ( loading ) {
+    // If the posts are loading, show a spinner
+    return <Heart />;
+  }
+
+  return (
+    <div>
+      
+    </div>
+  )
+}
 
 ```
 
@@ -146,3 +163,21 @@ https://www.youtube.com/watch?v=HANSMtDy508
 1. Inside of `index.html` add bootstrap cdn 
 2. Start at `App.js`
 3. Install `axios` for fetch JSONPlaceholder api call
+
+- Axios call
+* Step 1) useState, set posts to empty array
+```js
+state = {
+    posts: []
+}
+
+// same for 
+
+const [posts, setPosts] = useState([]);
+
+```
+
+- When does `useEffect` run?
+  1. component mounts
+  2. when updates component, fetchPosts will keep updating the component.  Infinite loop.  To stop that, we pass empty dependency array as the 2nd argument of `useEffect()`. 
+
