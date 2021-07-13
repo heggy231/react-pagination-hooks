@@ -29,8 +29,11 @@ const App = () => {
       const res = await axios.get(url);
       // pass promise response.data into setPosts to update state
 
-      setPosts(res.data);
-      setLoading(false); // toggle back to false, done api call
+      if (res.status === 200) {
+        // upon success, set posts to response.data
+        setPosts(res.data);
+        setLoading(false);
+      }
     }
 
     console.log('posts before setPosts(res.data)', posts);
