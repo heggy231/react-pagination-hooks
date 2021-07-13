@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import { Posts } from './components/Posts';
+import { Pagination } from './components/Pagination';
 
 const App = () => {
   const [posts, setPosts] = useState([]);
@@ -9,7 +10,7 @@ const App = () => {
   // pagination
   const [currentPage, setCurrentPage] = useState(1); // default page is 1
   // how many posts per page?
-  const [postsPerPage, setPostsPerPage] = useState(10);
+  const [postsPerPage] = useState(10);
 
   // mimic componentDidMount lifecycle method (called only once)
   useEffect(() => {
@@ -39,12 +40,16 @@ const App = () => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   //  step 3: get current posts. .slice(start, stop)
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-  console.log('currentPosts: =>', currentPosts);
+
+  // Change page function, pageNumber gets passed in
+  //  from Pagination component
+  const paginate = pageNumber => setCurrentPage(pageNumber);
 
   return (
     <div className='container mt-5'>
       <h1 className='text-primary font-weight-bold mb-3'>My Journal</h1>
       <Posts posts={currentPosts} loading={loading}/>
+      <Pagination paginate={paginate} postsPerPage={postsPerPage} totalPosts={posts.length} />
     </div>
   );
 };
