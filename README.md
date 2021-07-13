@@ -132,3 +132,17 @@ https://getbootstrap.com/docs/4.0/components/list-group/
   </ul>
 </nav>
 ```
+
+- credits: 
+* TraversyMedia Pagination: https://youtu.be/IYCa1F-OWmk
+https://www.youtube.com/c/TraversyMedia/playlists
+
+* Codevolution https://www.youtube.com/watch?v=QFaFIcGhPoM&list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3
+
+* using React Paginate library (PedroTech)
+https://www.youtube.com/watch?v=HANSMtDy508
+
+## second time practice
+1. Inside of `index.html` add bootstrap cdn 
+2. Start at `App.js`
+3. Install `axios` for fetch JSONPlaceholder api call
