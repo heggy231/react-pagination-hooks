@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
-import Posts from './components/Posts';
+import { Posts } from './components/Posts';
 
 const App = () => {
   const [posts, setPosts] = useState([]);
@@ -31,12 +31,20 @@ const App = () => {
     fetchPosts(); // call fetchPosts function
   }, []);
 
-  console.log('posts: =>', posts);
+  // console.log('posts: =>', posts);
+  // Get current posts
+  //  step 1: get the i of last post
+  const indexOfLastPost = currentPage * postsPerPage;
+  //  step 2: get the i of first post
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  //  step 3: get current posts. .slice(start, stop)
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  console.log('currentPosts: =>', currentPosts);
 
   return (
     <div className='container mt-5'>
       <h1 className='text-primary font-weight-bold mb-3'>My Journal</h1>
-      <Posts posts={posts} loading={loading}/>
+      <Posts posts={currentPosts} loading={loading}/>
     </div>
   );
 };
