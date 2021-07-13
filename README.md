@@ -98,3 +98,37 @@ https://getbootstrap.com/docs/4.0/components/list-group/
   <li class="list-group-item">Vestibulum at eros</li>
 </ul>
 ```
+
+### logic to calculate the currentPosts index
+
+```jsx
+// Get Current posts, currentPage ex: pg 1, postPerPage ex: 10 posts/pg 
+  //  result in last index => 10
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  // .slice(start, stop) indexOfLastPost not included .slice(0, 10)
+  //  => currentPosts i from 0 to 9 shallow copy of orig array
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  // console.log('posts =>', posts);  // => 100 posts
+  return (
+    <div className="container mt-5">
+      <h1 className="text-primary mb-3">My Blog</h1>
+      <Posts posts={currentPosts} loading={loading} />
+    </div>
+  );
+};
+```
+
+- [bootstrap styling for pagination](https://getbootstrap.com/docs/4.0/components/pagination/)
+
+```jsx
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+```
