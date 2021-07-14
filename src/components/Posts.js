@@ -1,5 +1,7 @@
-import React from 'react'
+import React from 'react';
+import spinnerBubble from './spinner-bubble.gif';
 import { Heart } from 'react-spinners-css';
+
 export const Posts = ({ posts, loading }) => {
   
   if (loading) {
@@ -9,7 +11,9 @@ export const Posts = ({ posts, loading }) => {
    */
     return (
       <div>
-        <Heart color="#3495fd"/>
+        {/* <Heart color="#3495fd"/> */}
+        {/* public folder you don't say public */}
+        <img src={spinnerBubble} alt="loading" />
       </div>
     )
   }

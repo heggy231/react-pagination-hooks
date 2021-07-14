@@ -62,6 +62,10 @@ This ensures posts data has been loaded.
 - add Spinner for while data is loading: 
 * Spinner: https://bit.dev/joshk/react-spinners-css/facebook, https://github.com/JoshK2/react-spinners-css
 
+* Spinner npm: https://www.npmjs.com/package/react-spinners-css
+
+
+
 ```js
 import React from 'react';
 import Facebook from '@bit/joshk.react-spinners-css.facebook';

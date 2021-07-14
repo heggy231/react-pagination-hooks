@@ -26,7 +26,11 @@ const App = () => {
       setLoading(true);
 
       const url = 'https://jsonplaceholder.typicode.com/posts';
-      const res = await axios.get(url);
+      let res = await axios.get(url);
+      // res = JSON.stringify(res.data)
+      // axios.get()
+      // .then(res => res.JSON())
+      // .then (res.data)
       // pass promise response.data into setPosts to update state
 
       if (res.status === 200) {
